@@ -1,5 +1,3 @@
-
-
 public class Orders {
 	public static final int MAX_NUMBERS_ORDERED = 10;
 	
@@ -22,6 +20,37 @@ public class Orders {
 			System.out.println("Don hang da duoc them.");
 			itemsOrdered[qtyOrdered()] = disc;
 		}
+	}
+	
+	public void addDigitalVideoDisc(DigitalVideoDisc[] dvdList) {
+		int n = dvdList.length;
+		for(int i = 0; i < n; i++)
+		{
+			if(qtyOrdered() >= 10) {
+				System.out.println("Don hang" + dvdList[i].getTitle() + "Khong duoc them vao don hang");
+			}else {
+				System.out.println("Don hang da duoc them.");
+				itemsOrdered[qtyOrdered()] = dvdList[i];
+			}
+		}
+	}
+	public void addDigitalVideoDisc(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
+		int i = 0;
+			if(qtyOrdered() < 10 && i == 0) {
+				System.out.println("Don hang da duoc them");
+				++i;
+				itemsOrdered[qtyOrdered()] = dvd1;
+			}
+			if(qtyOrdered() < 10 && i == 1) {
+				System.out.println("Don hang da duoc them");
+				itemsOrdered[qtyOrdered()] = dvd2;
+			}
+			if(qtyOrdered() >= 10 && i == 0) {
+				System.out.println("Don hang" + dvd1.getTitle() + " " + dvd2.getTitle() + " khong doc them vao don hang");
+			}
+			if(qtyOrdered() >= 10 && i == 1) {
+				System.out.println("Don hang"+ dvd2.getTitle() + " khong doc them vao don hang");
+			}
 	}
 	
 	public void removeDigitalVideoDisc(DigitalVideoDisc disc) {
