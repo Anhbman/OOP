@@ -36,6 +36,9 @@ public class DigitalVideoDisc {
 		this.cost = cost;
 	}
 
+	public DigitalVideoDisc() {
+		
+	}
 	public DigitalVideoDisc(String title) {
 		super();
 		this.title = title;

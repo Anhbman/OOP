@@ -4,23 +4,32 @@ public class TestPassingParameter {
 		DigitalVideoDisc jungleDVD = new DigitalVideoDisc("Jungle");
 		DigitalVideoDisc cinderellaDVD = new DigitalVideoDisc("Cinderella");
 		
-		swap(jungleDVD, cinderellaDVD);
 		System.out.println("jungle dvd title: " + jungleDVD.getTitle());
 		System.out.println("cinderella dvd title: " + cinderellaDVD.getTitle());
+		swap(jungleDVD, cinderellaDVD);
+
 		
-		changeTitle(jungleDVD, cinderellaDVD.getTitle());
 		System.out.println("jungle dvd title: " + jungleDVD.getTitle());
 	}
 	
-	public static void swap(Object o1, Object o2){
-		Object temp = o1;
-		o1 = o2;
-		o2 = temp;
-	}
-	
-	public static void changeTitle(DigitalVideoDisc dvd, String title) {
-		String old = dvd.getTitle();
-		dvd.setTitle(title);
-		dvd = new DigitalVideoDisc(old);
-	}
+	public static void swap(DigitalVideoDisc dvd1,DigitalVideoDisc dvd2){
+        DigitalVideoDisc d = new DigitalVideoDisc();
+        d.setTitle(dvd1.getTitle());
+        d.setCategory(dvd1.getCategory());
+        d.setCost(dvd1.getCost());
+        d.setDirector(dvd1.getDirector());
+        d.setLength(dvd1.getLength());
+
+        dvd1.setTitle(dvd2.getTitle());
+        dvd1.setCategory(dvd2.getCategory());
+        dvd1.setCost(dvd2.getCost());
+        dvd1.setDirector(dvd2.getDirector());
+        dvd1.setLength(dvd2.getLength());
+
+        dvd2.setTitle(d.getTitle());
+        dvd2.setCategory(d.getCategory());
+        dvd2.setCost(d.getCost());
+        dvd2.setDirector(d.getDirector());
+        dvd2.setLength(d.getLength());
+    }
 }
