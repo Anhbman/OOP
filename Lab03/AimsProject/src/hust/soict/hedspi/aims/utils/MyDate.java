@@ -7,15 +7,32 @@ public class MyDate {
     public int month;
     public int year = 2000;
 
+    private DateUtils[] Arr;
+    
+    
 
-    public MyDate() {
-    }
-    public MyDate(String day,String month,int year){
+    public DateUtils[] getArr() {
+		return Arr;
+	}
+
+	public void setArr(DateUtils[] arr) {
+		Arr = arr;
+	}
+
+	public MyDate(String day,String month,int year){
+    	super();
         this.setMonth(month);
         this.setDay(day);
         this.setYear(year);
     }
-
+    
+    public MyDate(int day, int month, int year) {
+    	super();
+    	this.day = day;
+    	this.month = month;
+    	this.year = year;
+    }
+    
     public int getDay() {
         return day;
     }
@@ -103,10 +120,10 @@ public class MyDate {
             return "error";
         }
         switch (format) {
-            case "yyyy-MM-dd":
+            case "yyyy-mm-dd":
                 return (year + "-" + (month < 10 ? "0" + month : month) + "-" + (day < 10 ? "0" + day : day));
 
-            case "d-M-yyyy":
+            case "dd-mm-yyyy":
                 return (day + "-" + month + "-" + year);
 
             case "mm-dd-yyyy":
