@@ -1,3 +1,4 @@
+package hust.soict.hedspi.aims.utils;
 
 public class MyDate {
 	String DAYS[] = {"First", "Ninth", "Seventeenth", "Twenty fifth", "Second", "Tenth", "Eighteenth", "Twent sixth", "Third", "Eleventh", "Nineteenth", "Twenty seventh", "Fourth", "Twelfth", "Twentieth", "Twenty eighth", "Fifth", "Thirteenth", "Twenty first", "Twenty ninth", "Sixth", "Fourteenth", "Twenty second", "Thirtieth", "Seventh", "Fifteenth", "Twenty third", "Thirty first", "Eighth", "Sixteenth", "Twenty fourth"};

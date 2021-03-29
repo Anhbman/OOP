@@ -1,4 +1,8 @@
+package hust.soict.hedspi.aims.order;
 import java.util.Random;
+
+import hust.soict.hedspi.aims.disc.DigitalVideoDisc;
+import hust.soict.hedspi.aims.utils.MyDate;
 
 public class Orders {
 	public static final int MAX_NUMBERS_ORDERED = 10;

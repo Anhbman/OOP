@@ -1,4 +1,9 @@
+package hust.soict.hedspi.aimss;
 import java.util.Arrays;
+
+import hust.soict.hedspi.aims.disc.DigitalVideoDisc;
+import hust.soict.hedspi.aims.order.Orders;
+import hust.soict.hedspi.aims.utils.MyDate;
 
 public class Aims {
 	public static void main(String[] args) {
