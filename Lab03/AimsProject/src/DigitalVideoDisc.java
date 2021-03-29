@@ -65,8 +65,23 @@ public class DigitalVideoDisc {
 		this.length = length;
 		this.cost = cost;
 	}
+	public void viewDVD(int i){
+        System.out.println(".DVD-"+title+"-" + category + "-" + director + "-" + length + ":" + cost + "$");
+    }
 	
-	
-	
+	public boolean search(String title) {
+		String[] words = title.toLowerCase().split(" ");
+		String temp = this.getTitle().toLowerCase();
+		if(title.equalsIgnoreCase(this.getTitle())) {
+			return true;
+		}else{
+			for(int i = 0; i < words.length; i++) {
+				if(!temp.contains(words[i])) {
+					return false;
+				}
+			}
+			return true;
+		}
+	}
 	
 }

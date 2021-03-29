@@ -1,6 +1,9 @@
+import java.util.Random;
+
 public class Orders {
 	public static final int MAX_NUMBERS_ORDERED = 10;
 	
+	private MyDate dateOrders;
 	private DigitalVideoDisc itemsOrdered[] = new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
 	
 	public int qtyOrdered() {
@@ -13,6 +16,20 @@ public class Orders {
 		return count;
 	}
 	
+	
+	
+	public MyDate getDateOrders() {
+		return dateOrders;
+	}
+
+
+
+	public void setDateOrders(MyDate dateOrders) {
+		this.dateOrders = dateOrders;
+	}
+
+
+
 	public void addDigitalVideoDisc(DigitalVideoDisc disc) {
 		if(qtyOrdered()>=10) {
 			System.out.println("Don hang da day.");
@@ -75,4 +92,33 @@ public class Orders {
 		return sum/100;
 	}
 
+	public void viewOrder(){
+        if(qtyOrdered() == 0 ){
+            System.out.println("Don hang rong");
+        }else{
+            System.out.println("****************** Dat hang ******************************");
+            System.out.println("Ngay:" + dateOrders.viewDate("mm-dd-yyyy"));
+            for (int i = 0; i < qtyOrdered(); i++)
+                this.itemsOrdered[i].viewDVD(i);
+            System.out.println("Tong chi phi : " + totalCost());
+            System.out.println("************************************************************");
+
+        }
+    }
+	public boolean find(String title) {
+		 for (int i = 0; i < qtyOrdered(); i++) {
+	        	if(itemsOrdered[i].search(title)) {
+	        		return true;
+	        	}else {
+	        		return false;
+	        	}	
+	        }
+		 return true;
+	}
+	public DigitalVideoDisc	getAluckyItem() {
+		Random ran = new Random();
+		int n = ran.nextInt(qtyOrdered()-1);
+		itemsOrdered[n].setCost(0f);
+		return itemsOrdered[n];
+	}
 }
