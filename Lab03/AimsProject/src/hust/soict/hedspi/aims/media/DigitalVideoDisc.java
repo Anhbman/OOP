@@ -1,40 +1,22 @@
-package hust.soict.hedspi.aims.disc;
+package hust.soict.hedspi.aims.media;
 
-public class DigitalVideoDisc {
-	private String title;
-	private String category;
+public class DigitalVideoDisc extends Media {
 	private String director;
 	private int length;
-	private float cost;
-	public String getTitle() {
-		return title;
-	}
-	public String getCategory() {
-		return category;
-	}
+	
 	public String getDirector() {
 		return director;
 	}
 	public int getLength() {
 		return length;
 	}
-	public float getCost() {
-		return cost;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public void setCategory(String category) {
-		this.category = category;
-	}
+	
+	
 	public void setDirector(String director) {
 		this.director = director;
 	}
 	public void setLength(int length) {
 		this.length = length;
-	}
-	public void setCost(float cost) {
-		this.cost = cost;
 	}
 
 	public DigitalVideoDisc() {
@@ -42,47 +24,43 @@ public class DigitalVideoDisc {
 	}
 	public DigitalVideoDisc(String title) {
 		super();
-		this.title = title;
+		this.setTitle(title);
 	}
 	public DigitalVideoDisc(String title, String category, float cost) {
 		super();
-		this.title = title;
-		this.category = category;
+		this.setTitle(title);
+		this.setCategory(category);
 		this.cost = cost;
 	}
 	public DigitalVideoDisc(String title, String category, String director, float cost) {
 		super();
-		this.title = title;
-		this.category = category;
+		this.setTitle(title);
+		this.setCategory(category);
 		this.director = director;
 		this.cost = cost;
 	}
 	public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
 		// TODO Auto-generated constructor stub
 		super();
-		this.title = title;
-		this.category = category;
+		this.setTitle(title);
+		this.setCategory(category);
 		this.director = director;
 		this.length = length;
 		this.cost = cost;
 	}
-	public void viewDVD(int i){
-        System.out.println(".DVD-"+title+"-" + category + "-" + director + "-" + length + ":" + cost + "$");
-    }
 	
 	public boolean search(String title) {
 		String[] words = title.toLowerCase().split(" ");
 		String temp = this.getTitle().toLowerCase();
-		if(title.equalsIgnoreCase(this.getTitle())) {
-			return true;
-		}else{
 			for(int i = 0; i < words.length; i++) {
 				if(!temp.contains(words[i])) {
 					return false;
 				}
 			}
 			return true;
-		}
 	}
+	public void viewDVD(){
+        System.out.println(".DVD-"+getTitle()+"-" + getCategory() + ":" + cost + "$");
+    }
 	
 }

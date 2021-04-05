@@ -12,7 +12,6 @@ public class DateTest {
 	    arr[1] = date1;
 	    arr[0] = date2;
 	    arr[2] = date3;
-	    
         DateUtils.sortDate(arr);
         for(int i = 0; i < arr.length; i++) {
             System.out.println(arr[i].viewDate("yyyy-mm-dd"));
