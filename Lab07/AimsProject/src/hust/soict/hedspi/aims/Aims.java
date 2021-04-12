@@ -1,0 +1,181 @@
+package hust.soict.hedspi.aims;
+import java.util.Arrays;
+import java.util.Scanner;
+
+import hust.soict.hedspi.aims.media.Book;
+import hust.soict.hedspi.aims.media.CompactDisc;
+import hust.soict.hedspi.aims.media.DigitalVideoDisc;
+import hust.soict.hedspi.aims.media.Media;
+import hust.soict.hedspi.aims.media.Track;
+import hust.soict.hedspi.aims.order.Orders;
+import hust.soict.hedspi.aims.utils.MyDate;
+
+public class Aims {
+	public static void main(String[] args) {
+//		Orders anOrder = new Orders();
+//				
+//		DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animaton", "Roger Allers", 87, 19.95f);
+//		
+//		anOrder.addMedia(dvd1);
+//		
+//		DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star war", "Science", "George Lucas", 87, 24.95f);
+//		
+//		anOrder.addMedia(dvd2);
+//		
+//		DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Anmation", 18.99f);
+//		anOrder.addMedia(dvd3,dvd2);
+		//anOrder.setDateOrders(new MyDate("First","May",2000));
+//		
+//		DigitalVideoDisc dvd4 = new DigitalVideoDisc("Star war");
+//		//anOrder.removeDigitalVideoDisc(dvd4);
+//		//System.out.println(anOrder.getAluckyItem());
+//		
+//		anOrder.viewOrder();
+//		System.out.print("Total Cost is: ");
+//		System.out.println(anOrder.totalCost());
+//		System.out.println(anOrder.find("The Lion"));
+//		System.out.println(dvd1.search("war"));
+		
+		
+		//anOrder.addMedia(new Book("Aladin", "Anmation"));
+//		Book book1;
+//		
+//		book1 = new Book("hahha", "hohoh", 18.9f);
+//		book1.addAuthor("Phong ngu");
+//		anOrder.addMedia(book1);
+//		anOrder.viewOrder();
+		//anOrder.viewOrder();
+		//anOrder.viewOrder();
+		//showMenu();
+		showAdminMenu();
+	}
+	
+	public static void showAdminMenu() {
+		Orders order1 = new Orders();
+		
+		int a;
+		
+		while(true) {
+			System.out.println("Product Management Application: ");
+			System.out.println("--------------------------------");
+			System.out.println("1. Create new item");
+			System.out.println("2. Delete item by id");
+			System.out.println("3. Display the items list");
+			System.out.println("0. Exit");
+			System.out.println("--------------------------------");
+			System.out.println("Please choose a number: 0-1-2-3");
+			
+			Scanner sc = new Scanner(System.in);
+			a = sc.nextInt();
+			
+			switch (a) {
+			case 1:{
+				int n; 
+				System.out.println("1. DVD \n2. CD \n3.Track \n4. Book");
+				n = sc.nextInt();
+				switch (n) {
+					case 1:
+						DigitalVideoDisc dic = new DigitalVideoDisc("Superman", "Animation", 20.8f);
+						order1.addMedia(dic);
+					
+					break;
+					case 2:{
+						CompactDisc cd = new CompactDisc("Men of steal", "Zack", "Zack", 90f);
+						order1.addMedia(cd);
+					}break;
+					
+					case 3:{
+						Track track = new Track("joker", 8);
+						
+						
+					}break;
+					case 4:{
+						Book book1 = new Book("Batman", "Animation", 19.8f);
+						book1.addAuthor("Zack");
+						order1.addMedia(book1);
+					}break;
+				default:
+					break;
+				}
+			}break;
+
+			case 4:{
+				order1.setDateOrders(new MyDate("First","May",2000));
+				order1.viewOrder();
+			}break;
+			
+			case 0:
+				return;
+			default:
+				break;
+			}
+		}
+	
+	}
+	
+	public static void showMenu() {
+		Orders order1 = new Orders();
+		
+		int a;
+		while(true){
+
+			System.out.println("Order Management Application: ");
+			System.out.println("--------------------------------");
+			System.out.println("1. Create new order");
+			System.out.println("2. Add item to the order");
+			System.out.println("3. Delete item by id");
+			System.out.println("4. Display the items list of order");
+			System.out.println("0. Exit");
+			System.out.println("--------------------------------");
+			System.out.println("Please choose a number: 0-1-2-3-4");
+			Scanner sc = new Scanner(System.in);
+			a = sc.nextInt();
+			
+			switch (a) {
+			case 1: {
+				if(Orders.nOrdered >= Orders.MAX_NUMBERS_ORDER) {
+					System.out.println("Don hang da day");
+					break;
+				}
+			}
+			
+			case 2:{
+				System.out.println("Chon loai don hang: ");
+				System.out.println("Book : 1\nDisc : 2: ");
+                int c;
+                c= new Scanner(System.in).nextInt();
+                switch (c) {
+				case 1: {
+					Book book1 = new Book("Batman", "Animation", 19.8f);
+					book1.addAuthor("Zack");
+					order1.addMedia(book1);
+					
+				}break;
+				case 2:{
+					DigitalVideoDisc dic = new DigitalVideoDisc("Superman", "Animation", 20.8f);
+					order1.addMedia(dic);
+				}break;
+				default:
+					System.out.println("Try again");
+				}
+			}
+			case 3:{
+				DigitalVideoDisc dic = new DigitalVideoDisc("Superman");
+				System.out.println(order1.removeMedia(dic) == true ? "Xoa thanh cong" : "Loi");
+			}break;
+			case 4:{
+				order1.viewOrder();
+			}
+			case 0:{
+				System.out.println("Bye");
+				return;
+			}
+			default:
+				System.out.println("Try again");
+			}
+		}
+		
+	}
+	
+
+}
