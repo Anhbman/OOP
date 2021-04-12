@@ -97,6 +97,7 @@ public class Aims {
 						order1.addMedia(book1);
 					}break;
 				default:
+					System.out.println("Dau vao khong hop le.");
 					break;
 				}
 			}break;
@@ -115,6 +116,7 @@ public class Aims {
 			case 0:
 				return;
 			default:
+				System.out.println("Dau vao khong hop le.");
 				break;
 			}
 		}
