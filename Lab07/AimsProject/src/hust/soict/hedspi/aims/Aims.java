@@ -52,6 +52,7 @@ public class Aims {
 	
 	public static void showAdminMenu() {
 		Orders order1 = new Orders();
+		CompactDisc cd = new CompactDisc();
 		
 		int a;
 		
@@ -80,13 +81,14 @@ public class Aims {
 					
 					break;
 					case 2:{
-						CompactDisc cd = new CompactDisc("Men of steal", "Zack", "Zack", 90f);
+						cd = new CompactDisc("Men of steal", "Zack", "Zack",3, 90f);
 						order1.addMedia(cd);
 					}break;
 					
 					case 3:{
 						Track track = new Track("joker", 8);
-						
+						cd.addTrack(track);
+						track.play();
 						
 					}break;
 					case 4:{
@@ -99,7 +101,13 @@ public class Aims {
 				}
 			}break;
 
-			case 4:{
+			case 2:{
+				DigitalVideoDisc dic = new DigitalVideoDisc("Superman", "Animation", 20.8f);
+				System.out.println(order1.RemoveMedia(dic));
+				
+			}break;
+			
+			case 3:{
 				order1.setDateOrders(new MyDate("First","May",2000));
 				order1.viewOrder();
 			}break;
@@ -161,7 +169,7 @@ public class Aims {
 			}
 			case 3:{
 				DigitalVideoDisc dic = new DigitalVideoDisc("Superman");
-				System.out.println(order1.removeMedia(dic) == true ? "Xoa thanh cong" : "Loi");
+				System.out.println(order1.RemoveMedia(dic) == true ? "Xoa thanh cong" : "Loi");
 			}break;
 			case 4:{
 				order1.viewOrder();

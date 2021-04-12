@@ -15,11 +15,15 @@ public class CompactDisc extends Disc implements Playable{
 		super(title);
 	}
 
-	public CompactDisc(String title, String director ,String artist, float cost) {
-		super(title, artist, director, cost);
+	public CompactDisc(String title, String director ,String artist, int length,float cost) {
+		super(title, artist, director, length,cost);
 		this.artist = artist;
 	}
 	
+	public CompactDisc() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public void addTrack(Track track) {
 		if(tracks.contains(track)) {
 			System.out.println("Da ton tai track");
@@ -45,7 +49,7 @@ public class CompactDisc extends Disc implements Playable{
 	@Override
 	public String printInfor() {
 		// TODO Auto-generated method stub
-		return ("CD: " + super.getTitle() + " - " + super.getDirector() + " - " + " - " + getArtist() + super.getCost());
+		return (".CD: " + super.getTitle() + " - " + super.getDirector() + " - "+ getArtist() + " - " + super.getLength() + super.getCost());
 	}
 
 	@Override

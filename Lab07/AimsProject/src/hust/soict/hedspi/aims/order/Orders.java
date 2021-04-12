@@ -105,7 +105,7 @@ public class Orders {
             System.out.println("Don hang rong");
         }else{
             System.out.println("****************** Dat hang ******************************");
-           // System.out.println("Ngay:" + dateOrders.viewDate("mm-dd-yyyy"));
+            System.out.println("Ngay:" + dateOrders.viewDate("mm-dd-yyyy"));
             for (int i = 0; i < qtyOrdered(); i++)
                 System.out.println(this.itemsOrdered.get(i).printInfor());
             System.out.println("Tong chi phi : " + totalCost());
@@ -114,9 +114,6 @@ public class Orders {
         }
     }
 	
-	public boolean removeMedia(Media disc) {
-        return this.itemsOrdered.remove(disc);
-    }
 //	public boolean find(String title) {
 //		 for (int i = 0; i < qtyOrdered(); i++) {
 //	        	if(itemsOrdered[i].search(title)) {

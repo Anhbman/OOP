@@ -15,7 +15,10 @@ public class Disc extends Media{
 		return director;
 	}
 
-
+	public Disc() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public Disc(String title) {
 		super(title);
 	}
@@ -24,9 +27,10 @@ public class Disc extends Media{
 		super(title, category, cost);
 	}
 	
-	public Disc(String title, String category, String director,float cost) {
+	public Disc(String title, String category, String director, int length,float cost) {
 		super(title, category, cost);
 		this.director = director;
+		this.length = length;
 	}
 	
 	@Override
