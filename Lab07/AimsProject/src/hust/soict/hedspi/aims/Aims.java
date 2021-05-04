@@ -1,9 +1,15 @@
 package hust.soict.hedspi.aims;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
+import hust.soict.hedspi.aims.media.AbstractItemFactory;
 import hust.soict.hedspi.aims.media.Book;
+import hust.soict.hedspi.aims.media.BookFactory;
+import hust.soict.hedspi.aims.media.CDFactory;
 import hust.soict.hedspi.aims.media.CompactDisc;
+import hust.soict.hedspi.aims.media.DVDFactory;
 import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 import hust.soict.hedspi.aims.media.Media;
 import hust.soict.hedspi.aims.media.Track;
@@ -46,13 +52,15 @@ public class Aims {
 //		anOrder.viewOrder();
 		//anOrder.viewOrder();
 		//anOrder.viewOrder();
-		//showMenu();
-		showAdminMenu();
+		showMenu();
+		//showAdminMenu();
 	}
 	
 	public static void showAdminMenu() {
 		Orders order1 = new Orders();
 		CompactDisc cd = new CompactDisc();
+		List<Media> items = new ArrayList<>();
+	
 		
 		int a;
 		
@@ -69,6 +77,7 @@ public class Aims {
 			Scanner sc = new Scanner(System.in);
 			a = sc.nextInt();
 			
+			
 			switch (a) {
 			case 1:{
 				int n; 
@@ -76,13 +85,16 @@ public class Aims {
 				n = sc.nextInt();
 				switch (n) {
 					case 1:
+						
 						DigitalVideoDisc dic = new DigitalVideoDisc("Superman", "Animation", 20.8f);
-						order1.addMedia(dic);
+						items.add(dic);
+						//order1.addMedia(dic);
 					
 					break;
 					case 2:{
 						cd = new CompactDisc("Men of steal", "Zack", "Zack",3, 90f);
-						order1.addMedia(cd);
+						items.add(cd);
+//						order1.addMedia(cd);
 					}break;
 					
 					case 3:{
@@ -94,6 +106,7 @@ public class Aims {
 					case 4:{
 						Book book1 = new Book("Batman", "Animation", 19.8f);
 						book1.addAuthor("Zack");
+						items.add(book1);
 						order1.addMedia(book1);
 					}break;
 				default:
@@ -103,14 +116,23 @@ public class Aims {
 			}break;
 
 			case 2:{
-				DigitalVideoDisc dic = new DigitalVideoDisc("Superman", "Animation", 20.8f);
-				System.out.println(order1.RemoveMedia(dic));
-				
+				System.out.print(" Nhap vao ID: ");
+				int check = 0;
+				int n = sc.nextInt();
+				for(Media item : items) {
+					if(item.getId() == n) {
+						items.remove(n);
+						
+					}
+				}
 			}break;
 			
 			case 3:{
 				order1.setDateOrders(new MyDate("First","May",2000));
-				order1.viewOrder();
+				for(Media item: items) {
+					System.out.println(item.getId());
+				}
+				//order1.viewOrder();
 			}break;
 			
 			case 0:
@@ -124,7 +146,7 @@ public class Aims {
 	}
 	
 	public static void showMenu() {
-		Orders order1 = new Orders();
+		Orders order1 = null;
 		
 		int a;
 		while(true){
@@ -143,28 +165,31 @@ public class Aims {
 			
 			switch (a) {
 			case 1: {
-				if(Orders.nOrdered >= Orders.MAX_NUMBERS_ORDER) {
-					System.out.println("Don hang da day");
-					break;
-				}
+				order1 = createOrder();
+				order1.setDateOrders(new MyDate("First","May",2000));
+				if(order1 == null)
+					System.out.println("Khong the tao them don hang");
 			}
-			
+			break;
 			case 2:{
 				System.out.println("Chon loai don hang: ");
-				System.out.println("Book : 1\nDisc : 2: ");
+				System.out.println("Book : 1\nDisc : 2\nCompactDisc : 3\n");
+				System.out.print("Lua chon cua ban: ");
                 int c;
                 c= new Scanner(System.in).nextInt();
                 switch (c) {
 				case 1: {
-					Book book1 = new Book("Batman", "Animation", 19.8f);
-					book1.addAuthor("Zack");
-					order1.addMedia(book1);
-					
+					Media tmp = createItem(new BookFactory());
+					order1.addMedia(tmp);
 				}break;
 				case 2:{
-					DigitalVideoDisc dic = new DigitalVideoDisc("Superman", "Animation", 20.8f);
+					Media dic = createItem(new DVDFactory());
 					order1.addMedia(dic);
 				}break;
+				case 3:{
+					Media Com = createItem(new CDFactory());
+					order1.addMedia(Com);
+				}
 				default:
 					System.out.println("Try again");
 				}
@@ -187,5 +212,15 @@ public class Aims {
 		
 	}
 	
+	public static Orders createOrder() {
+		if(Orders.nOrdered > Orders.MAX_NUMBERS_ORDERED) {
+			return null;
+		}
+        return new Orders();
+    }
+
+	private static Media createItem(AbstractItemFactory abstractItemFactory) {
+		return abstractItemFactory.createItemFromConsole();
+	}
 
 }

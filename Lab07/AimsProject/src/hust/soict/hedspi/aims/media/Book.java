@@ -7,6 +7,12 @@ public class Book extends Media{
 	
 	private List<String> authors = new ArrayList<String>();
 
+	
+	
+	public Book() {
+		super();
+	}
+	
 	public Book (String title){
 		super(title);
 	}
@@ -44,7 +50,7 @@ public class Book extends Media{
 	
 	@Override
     public String printInfor() {
-        return ( ".Book-"+ super.getTitle() +"-" + super.getCategory() + "-" + getAuthors() + ":" + super.getCost() + "$");
+        return ( ".Book-"+ super.getTitle() +" - " + super.getId() + " - " + super.getCategory() + " - " + getAuthors() + ":" + super.getCost() + "$");
     }
 	
 	

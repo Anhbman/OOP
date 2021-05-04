@@ -7,6 +7,20 @@ public class CompactDisc extends Disc implements Playable{
 	private String artist;
 	private ArrayList<Track> tracks = new ArrayList<Track>();
 	
+	
+	
+	public ArrayList<Track> getTracks() {
+		return tracks;
+	}
+
+	public void setTracks(ArrayList<Track> tracks) {
+		this.tracks = tracks;
+	}
+
+	public void setArtist(String artist) {
+		this.artist = artist;
+	}
+
 	public String getArtist() {
 		return artist;
 	}
@@ -21,9 +35,10 @@ public class CompactDisc extends Disc implements Playable{
 	}
 	
 	public CompactDisc() {
-		// TODO Auto-generated constructor stub
+		super();
 	}
 
+	
 	public void addTrack(Track track) {
 		if(tracks.contains(track)) {
 			System.out.println("Da ton tai track");
@@ -49,7 +64,7 @@ public class CompactDisc extends Disc implements Playable{
 	@Override
 	public String printInfor() {
 		// TODO Auto-generated method stub
-		return (".CD: " + super.getTitle() + " - " + super.getDirector() + " - "+ getArtist() + " - " + super.getLength() + super.getCost());
+		return (".CD: " + super.getTitle() + " - " + super.getId() + " - "+ super.getDirector() + " - "+ getArtist() + " - " + super.getLength() + " - " + super.getCost());
 	}
 
 	@Override

@@ -6,6 +6,11 @@ public class Disc extends Media{
 	private String director;
 	
 	
+	public void setLength(int length) {
+		this.length = length;
+	}
+
+
 	public int getLength() {
 		return length;
 	}
@@ -29,14 +34,24 @@ public class Disc extends Media{
 	
 	public Disc(String title, String category, String director, int length,float cost) {
 		super(title, category, cost);
-		this.director = director;
+		this.setDirector(director);
 		this.length = length;
 	}
 	
+	public Disc(String title, String category, String director2, float cost) {
+		// TODO Auto-generated constructor stub
+	}
+
+
 	@Override
 	public String printInfor() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	public void setDirector(String director) {
+		this.director = director;
 	}
 
 
